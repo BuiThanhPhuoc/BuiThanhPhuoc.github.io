@@ -6,6 +6,10 @@ chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
+{{% notice note %}}
+📌 **Info:** Event report about AWS Cloud Quest, Floci, the hackathon journey, confidence, the Tu Vi Dai Viet project, and overcoming procrastination.
+{{% /notice %}}
+
 # Event 2 Report: AWS Learning, Hackathon, Confidence, and Procrastination
 
 ### Event Objectives

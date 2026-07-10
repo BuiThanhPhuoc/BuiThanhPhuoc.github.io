@@ -6,6 +6,10 @@ chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
+{{% notice note %}}
+📌 **Info:** Báo cáo event tham gia về AWS Cloud Quest, Floci, hành trình hackathon, sự tự tin, dự án Tử Vi Đại Việt và cách vượt qua sự trì hoãn.
+{{% /notice %}}
+
 # Bài thu hoạch Event 2: AWS Learning, Hackathon, Confidence và Procrastination
 
 ### Mục Đích Của Sự Kiện

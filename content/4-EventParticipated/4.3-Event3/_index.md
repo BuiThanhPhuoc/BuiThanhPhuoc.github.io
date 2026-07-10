@@ -6,6 +6,10 @@ chapter: false
 pre: " <b> 4.3. </b> "
 ---
 
+{{% notice note %}}
+📌 **Info:** Event report about Data, AI, Cloud, AgenticOps, Voice Agent, DevOps Agent, AI in HR, and Secure Private MCP.
+{{% /notice %}}
+
 # FCAJ Community Day Report: Data Driven, AI Risen
 
 ### Event Objectives
