@@ -22,30 +22,23 @@ pre: " <b> 4. </b> "
 > * Việc liệt kê này giúp thể hiện rõ sự tham gia thực tế của bạn, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.
 
 
-Trong quá trình thực tập, em đã tham gia 4 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là những món quà và những khoảnh khắc rất tuyệt vời.
+Trong quá trình thực tập, em đã tham gia 3 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là những món quà và những khoảnh khắc rất tuyệt vời.
 
 ### [Event 1](4.1-Event1/)
-&emsp;**Tên sự kiện:** Learning Mindset, Prompt Engineering và AI-Ready Fresher
-
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
-
-
-
-### [Event 2](4.2-Event2/)
 &emsp;**Tên sự kiện:** AWS Learning, Hackathon, Confidence và Procrastination
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự 
 
 
 
-### [Event 3](4.3-Event3/)
+### [Event 2](4.2-Event2/)
 &emsp;**Tên sự kiện:** FCAJ Community Day "Data Driven, AI Risen"
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự 
 
 
 
-### [Event 4](4.4-Event4/)
+### [Event 3](4.3-Event3/)
 &emsp;**Tên sự kiện:** GameDay "8 Đội Tranh Hùng"
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự 
