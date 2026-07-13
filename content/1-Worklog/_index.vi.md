@@ -4,7 +4,6 @@ date: 2026-04-13
 weight: 1
 chapter: false
 pre: " <b> 1. </b> "
-disableBreadcrumb: true
 ---
 
 Worklog này tổng hợp tiến độ học tập, thực hành AWS và triển khai dự án VDCMS trong quá trình thực tập **First Cloud AI Journey**. Nội dung dưới đây trình bày tóm tắt theo tuần với liên kết tới ghi chú chi tiết của từng tuần.

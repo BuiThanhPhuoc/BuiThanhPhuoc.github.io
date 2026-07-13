@@ -4,7 +4,6 @@ date: 2026-04-13
 weight: 1
 chapter: false
 pre: " <b> 1. </b> "
-disableBreadcrumb: true
 ---
  
 This worklog summarizes the weekly learning progress, hands-on AWS practice, and the VDCMS capstone project completed during the **First Cloud AI Journey** internship. The content below follows a concise weekly outline with links to each week's detailed notes.
