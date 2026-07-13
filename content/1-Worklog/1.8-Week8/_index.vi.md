@@ -6,8 +6,7 @@ chapter: false
 pre: " <b> 1.8. </b> "
 ---
 
-# Worklog Tuần 8
-
+<!-- Removed duplicate title -->
 {{% notice note %}}
 **Thông tin:** Báo cáo tiến độ tuần 8 - học Kinesis, Redshift, SageMaker, Bedrock, chuẩn hóa kiến trúc và tham gia AWS Vietnam Meetup Data & AI.
 {{% /notice %}}

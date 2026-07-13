@@ -5,9 +5,6 @@ weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-
-# Week 3 Worklog
-
 {{% notice note %}}
 **Info:** Learning progress and practical report for Week 3 - Amazon S3, EBS, VPC networking, security controls, CloudFront, and account profile completion.
 {{% /notice %}}

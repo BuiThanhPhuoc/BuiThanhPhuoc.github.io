@@ -6,8 +6,7 @@ chapter: false
 pre: " <b> 1.12. </b> "
 ---
 
-# Worklog Tuần 12
-
+<!-- Removed duplicate title -->
 {{% notice note %}}
 **Thông tin:** Báo cáo cuối tuần 12 - validate, deploy, test, cải tiến, dọn dẹp và hoàn thiện VDCMS trên AWS.
 {{% /notice %}}

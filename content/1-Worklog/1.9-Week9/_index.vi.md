@@ -6,13 +6,10 @@ chapter: false
 pre: " <b> 1.9. </b> "
 ---
 
-# Worklog Tuần 9
-
+ 
 {{% notice note %}}
 **Thông tin:** Báo cáo triển khai tuần 9 - xác định đề tài VDCMS và xây dựng các nền tảng backend/frontend đầu tiên.
 {{% /notice %}}
-
-**Thời gian:** 08/06/2026 - 14/06/2026
 
 ## Mục tiêu Tuần 9:
 

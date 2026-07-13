@@ -4,26 +4,27 @@ date: 2026-04-13
 weight: 1
 chapter: false
 pre: " <b> 1. </b> "
+disableBreadcrumb: true
 ---
 
-# Worklog
+Worklog này tổng hợp tiến độ học tập, thực hành AWS và triển khai dự án VDCMS trong quá trình thực tập **First Cloud AI Journey**. Nội dung dưới đây trình bày tóm tắt theo tuần với liên kết tới ghi chú chi tiết của từng tuần.
 
-Worklog này tổng hợp tiến độ học tập, thực hành AWS và triển khai dự án VDCMS trong quá trình thực tập **First Cloud AI Journey**. Nội dung được bám theo phiếu theo dõi tiến độ và trình bày theo từng tuần gồm mục tiêu, công việc theo ngày và kết quả đạt được.
+<div class="note" style="background:#f7f8fa;border-left:4px solid #e0a84f;padding:12px;margin-bottom:1rem;">
+<strong>Ghi chú:</strong> Nhật ký học tập và thực hành trong 12 tuần thực tập, từ 17/04/2026 đến 10/07/2026.
+</div>
 
-## Tóm tắt theo tuần
+Trong 12 tuần, tôi đã nghiên cứu và thực hành các dịch vụ AWS từ cơ bản tới nâng cao, hoàn thành các lab thực hành và xây dựng dự án VDCMS.
 
-| Tuần | Thời gian | Trọng tâm |
-| --- | --- | --- |
-| [Tuần 1](1.1-week1/) | 13/04/2026 - 18/04/2026 | Khởi động chương trình và làm quen First Cloud AI Journey |
-| [Tuần 2](1.2-week2/) | 20/04/2026 - 25/04/2026 | Nền tảng AWS, bảo mật tài khoản, quản lý chi phí và EC2 |
-| [Tuần 3](1.3-week3/) | 27/04/2026 - 02/05/2026 | Lưu trữ, mạng, bảo mật mạng, CDN và hoàn thiện thông tin tài khoản |
-| [Tuần 4](1.4-week4/) | 04/05/2026 - 09/05/2026 | AWS Support, RDS, cân bằng tải, serverless, NoSQL và giám sát |
-| [Tuần 5](1.5-week5/) | 11/05/2026 - 16/05/2026 | AWS Organizations, Secrets, Certificate, Terraform, Container và CI/CD |
-| [Tuần 6](1.6-week6/) | 18/05/2026 - 23/05/2026 | Developer Tools, SAM, SSM, phân tích dữ liệu, FinOps và phỏng vấn thử |
-| [Tuần 7](1.7-week7/) | 25/05/2026 - 30/05/2026 | Bảo mật Cloud, Hybrid Cloud, EFS, kiến trúc web hoàn chỉnh và AWS Meetup |
-| [Tuần 8](1.8-week8/) | 01/06/2026 - 06/06/2026 | Streaming data, data warehouse, AI/ML, Generative AI và Meetup Data & AI |
-| [Tuần 9](1.9-week9/) | 08/06/2026 - 14/06/2026 | Phân tích yêu cầu VDCMS, thiết kế database, backend, frontend và giao diện quản lý |
-| [Tuần 10](1.10-week10/) | 15/06/2026 - 21/06/2026 | Giao việc VDCMS, luồng Engineer, báo cáo giọng nói, chat và quản lý tài khoản |
-| [Tuần 11](1.11-week11/) | 22/06/2026 - 28/06/2026 | Kiến trúc triển khai AWS, CloudFormation, speech pipeline, SES, Cognito và tài liệu |
-| [Tuần 12](1.12-week12/) | 29/06/2026 - 04/07/2026 | Validate CloudFormation, triển khai AWS, kiểm thử end-to-end, systemd, cleanup và thuyết trình |
+1. [Tuần 1](1.1-week1/) — Khởi động chương trình, hạ tầng AWS toàn cầu và các dịch vụ cơ bản
+2. [Tuần 2](1.2-week2/) — Bảng điều khiển AWS, Gen AI trên AWS, tối ưu chi phí, IAM và kiến trúc VPC nhiều lớp bảo mật
+3. [Tuần 3](1.3-week3/) — Lưu trữ, mạng, CDN, luật bảo mật và hoàn thiện tài khoản
+4. [Tuần 4](1.4-week4/) — Compute (EC2), storage (EBS/EFS/FSx), DNS hybrid, RDS và giám sát
+5. [Tuần 5](1.5-week5/) — Organizations, Secrets Manager, Certificate, Terraform, Container và CI/CD
+6. [Tuần 6](1.6-week6/) — Developer tools, SAM, SSM, phân tích dữ liệu, FinOps và chuẩn bị phỏng vấn
+7. [Tuần 7](1.7-week7/) — Bảo mật, hybrid cloud, EFS, kiến trúc web hoàn chỉnh và AWS Meetup
+8. [Tuần 8](1.8-week8/) — Streaming data, data warehouse, AI/ML và Generative AI
+9. [Tuần 9](1.9-week9/) — Phân tích yêu cầu VDCMS, thiết kế database, backend và frontend
+10. [Tuần 10](1.10-week10/) — Luồng công việc VDCMS: phân công, báo cáo giọng nói, chat và quản lý tài khoản
+11. [Tuần 11](1.11-week11/) — Kiến trúc triển khai, CloudFormation, pipeline xử lý giọng nói, Cognito, SES và tài liệu
+12. [Tuần 12](1.12-week12/) — Validate CloudFormation, triển khai cuối cùng, kiểm thử end-to-end và dọn dẹp tài nguyên
 

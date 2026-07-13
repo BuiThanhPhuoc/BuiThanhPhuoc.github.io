@@ -6,8 +6,7 @@ chapter: false
 pre: " <b> 1.8. </b> "
 ---
 
-# Week 8 Worklog
-
+ 
 {{% notice note %}}
 **Info:** Learning progress and practical report for Week 8 - Kinesis, Redshift, SageMaker, Bedrock, architecture standardization, and Data & AI community learning.
 {{% /notice %}}

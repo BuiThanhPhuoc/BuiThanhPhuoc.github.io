@@ -6,8 +6,7 @@ chapter: false
 pre: " <b> 1.7. </b> "
 ---
 
-# Week 7 Worklog
-
+ 
 {{% notice note %}}
 **Info:** Learning progress and practical report for Week 7 - WAF, Shield, Firewall Manager, hybrid cloud connectivity, EFS, multi-AZ architecture, and community learning.
 {{% /notice %}}

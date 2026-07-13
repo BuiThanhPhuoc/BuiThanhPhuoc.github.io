@@ -1,181 +1,180 @@
 ---
 title: "Blog 3"
-date: 2026-07-08
-weight: 3
+date: 2024-01-01
+weight: 1
 chapter: false
 pre: " <b> 3.3. </b> "
-----------------------
-
-{{% notice note %}}
-📌 **Infor:** Blog 3 - Private NAT Gateway
+---
+{{% notice warning %}}
+⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-# Private NAT Gateway - How United Airlines solved IP exhaustion when the system needed to scale urgently
+# Private NAT Gateway - How United Airlines Solved IP Exhaustion When Systems Need to Scale Rapidly
 
-In large-scale cloud systems, sometimes the problem is not a lack of compute, containers, or serverless capacity, but something very basic: **IP addresses**.
+In large-scale cloud systems, sometimes the issue isn't a lack of compute, containers, or serverless capacity, but rather something very fundamental: **IP addresses**.
 
-**United Airlines** is a major airline in the United States, operating systems that serve hundreds of millions of passengers each year. When incidents occur, such as severe weather, mass flight cancellations, or disruptions caused by air traffic control, United's system needs to scale very quickly to handle many tasks at the same time: rebooking tickets, updating itineraries, processing flight data, coordinating baggage, and reassigning crews.
+**United Airlines** is a major airline in the US, operating systems that serve hundreds of millions of passengers annually. When incidents occur—such as bad weather, mass flight cancellations, or disruptions due to air traffic control issues—United's systems need to scale rapidly to handle many tasks simultaneously: rebooking flights, updating itineraries, processing flight data, managing baggage, and reassigning crew members.
 
-However, in a **hybrid network** environment with hundreds of AWS accounts connected back to on-premises systems, United encountered a rather frustrating limitation: **exhaustion of routable IPv4 addresses**.
-
----
-
-## The problem: compute could scale, but IPs could not
-
-In AWS, many workloads running inside a VPC require an **Elastic Network Interface (ENI)**. For example:
-
-* Amazon ECS tasks.
-* AWS Glue jobs.
-* AWS Lambda functions attached to a VPC.
-
-Each ENI consumes one IP address in the subnet. For large enterprises like United Airlines, private IP ranges under **RFC 1918** are often allocated very carefully to avoid overlap with on-premises networks, other VPCs, or internal network systems.
-
-Under normal conditions, the allocated IP capacity may be enough. But when a widespread incident occurs, many workloads scale up at the same time. ECS tasks increase, Glue jobs run more frequently, and Lambda functions fan out in large numbers. All of them consume IPs from a limited pool.
-
-As a result, the system can hit the IP ceiling exactly when it needs to scale the most.
-
-The difficult point is that requesting additional routable IP ranges cannot be done in a few minutes. It requires coordination with the network team, routing updates, firewall rule changes, and overlap checks. In a large environment, this process can take several weeks.
-
-United needed a way for compute to scale quickly without depending on the remaining number of available routable IP addresses.
+However, in a **hybrid network environment** with hundreds of AWS accounts connected to on-premises systems, United faced a difficult constraint: **IP address exhaustion for routable IPv4 addresses**.
 
 ---
 
-## Why not simply request more IPs or move to IPv6?
+## The Problem: Compute Can Scale, But IPs Cannot
 
-Before choosing **Private NAT Gateway**, United considered several different options.
+In AWS, many workloads running within a VPC need **Elastic Network Interfaces (ENI)**. For example:
 
-**Requesting more RFC 1918 space** is the most direct approach, but it is not suitable for sudden scaling needs because it takes a lot of coordination time.
+- Amazon ECS tasks.
+- AWS Glue jobs.
+- AWS Lambda functions attached to a VPC.
 
-**IPv6** is a long-term solution to the IPv4 shortage problem. However, for an enterprise with hundreds of accounts, many routing systems, monitoring tools, and security policies still based on IPv4, moving to IPv6 is a major organization-level decision. It cannot be implemented quickly just to solve a short-term issue.
+Each ENI consumes an IP address within a subnet. For large enterprises like United Airlines, private **RFC 1918** IP ranges are typically allocated very tightly to avoid conflicts with on-premises systems, other VPCs, or internal networks.
 
-**AWS PrivateLink** is suitable when specific services need to be exposed between VPCs, but United's workloads needed outbound connectivity to many destinations: Transit Gateway, on-premises systems, shared services, and multiple other VPCs.
+Under normal conditions, the allocated IPs may be sufficient. But when widespread incidents occur, many workloads scale up simultaneously. ECS tasks increase, Glue jobs run more frequently, Lambda functions fan-out massively. All drawing from a limited IP pool.
 
-**Amazon VPC Lattice** fits a clear service-to-service model, but United's problem leaned more toward general outbound connectivity, meaning workloads needed to reach many different destinations instead of only calling a few pre-registered services.
+The result is that the system can hit the IP ceiling exactly when it needs to expand most.
 
-**Network renumbering** could solve the problem at the root, but at a large scale, this would be a multi-year project.
+The challenge is that requesting additional routable IP ranges cannot be done in minutes. It requires coordination with the network team, updating routing, firewall rules, and checking for overlaps. In a large environment, this process can take weeks.
 
-Therefore, United chose Private NAT Gateway because it could be implemented within a few weeks, did not require changes to destination systems, and still worked with the existing IPv4 infrastructure.
+United needed a way for compute to scale rapidly without depending on available routable IP addresses.
 
 ---
 
-## Main idea of the solution
+## Why Not Just Request More IPs or Switch to IPv6?
 
-Instead of placing all workloads in subnets that use scarce routable IPs, United moved compute workloads to the `100.64.0.0/10` range.
+Before choosing **Private NAT Gateway**, United considered many alternatives.
 
-This is the **Carrier-Grade NAT** range defined by **RFC 6598**. These addresses are not routed inside United's corporate network, so they can be used for compute subnets without requesting allocation from the traditional routable IPv4 pool.
+**Requesting additional RFC 1918 space** was the most direct approach, but unsuitable for sudden scaling needs due to lengthy coordination time.
 
-But there is one issue: workloads running on the `100.64.x.x` range cannot communicate outside the VPC by themselves, such as to on-premises systems, shared services, or other VPCs through Transit Gateway.
+**IPv6** is a long-term solution to IPv4 exhaustion. However, with an enterprise having hundreds of accounts, routing systems, monitoring, and security policies built on IPv4, switching to IPv6 would be a major organizational decision that cannot be implemented quickly just to solve a short-term problem.
 
-This is where **Private NAT Gateway** becomes useful.
+**AWS PrivateLink** works when exposing specific services between VPCs, but United's workloads need outbound connectivity to many places: Transit Gateway, on-premises systems, shared services, and multiple VPCs.
 
-Private NAT Gateway is placed in a routable subnet. When a workload from a `100.64.x.x` subnet sends traffic outside, Private NAT Gateway translates the source IP from a non-routable address to the routable address of the gateway. After that, the traffic can continue through Transit Gateway to the systems it needs to access.
+**Amazon VPC Lattice** fits a clear service-to-service model, but United's problem leans toward general outbound connectivity—workloads need to reach many different destinations rather than just calling pre-registered services.
+
+**Network renumbering** could solve it fundamentally, but at this scale, it's a multi-year project.
+
+Therefore, United chose Private NAT Gateway because it can be deployed in weeks, requires no changes to destination systems, and works with existing IPv4 infrastructure.
+
+---
+
+## The Core Idea of the Solution
+
+Instead of placing all workloads in subnets using scarce routable IPs, United moves compute workloads to the `100.64.0.0/10` range.
+
+This is the **Carrier-Grade NAT** range per **RFC 6598**. These addresses are not routed within United's corporate network, so they can be used for compute subnets without requesting allocation from the traditional routable IPv4 pool.
+
+But there's a problem: workloads running on the `100.64.x.x` range cannot directly communicate outside the VPC—for example, to on-premises systems, shared services, or other VPCs via Transit Gateway.
+
+This is where **Private NAT Gateway** comes into play.
+
+Private NAT Gateway is placed in a routable subnet. When workloads from the `100.64.x.x` subnet send traffic outbound, Private NAT Gateway translates the source IP from the non-routable address to the gateway's routable address. Traffic can then proceed via Transit Gateway to target systems.
 
 Simply put:
 
-* Compute uses non-routable IPs to avoid running out of addresses.
-* Private NAT Gateway sits in the middle to translate traffic to a routable IP.
-* The destination system does not need to change anything.
+- Compute uses non-routable IPs to avoid address exhaustion.
+- Private NAT Gateway translates traffic to routable IPs.
+- Destination systems need no changes.
 
 ---
 
-## How does the architecture work?
+## How Does the Architecture Work?
 
 United's model can be understood in three main parts.
 
-The first part is the **non-routable compute subnets** using the `100.64.0.0/10` range. This is where ECS tasks, AWS Glue jobs, and VPC-attached Lambda functions run.
+First is **non-routable compute subnets** using the `100.64.0.0/10` range. This is where ECS tasks, AWS Glue jobs, and VPC-attached Lambda functions run.
 
-The second part is the **routable subnets**. These subnets still use IP ranges that can be routed in the corporate network. Private NAT Gateway, load balancers, or components that need to be accessed directly are placed here.
+Second are **routable subnets**. These still use IP ranges routable within the corporate network. Private NAT Gateway, load balancers, or components needing direct access sit here.
 
-The third part is **Transit Gateway**, which connects to other VPCs, shared services, and on-premises systems.
+Third is the **Transit Gateway** connecting to other VPCs, shared services, and on-premises systems.
 
-The traffic flow works as follows:
+Traffic flows as follows:
 
-1. A workload in the `100.64.x.x` subnet sends a request outside the VPC.
-2. The route table of the non-routable subnet sends default traffic to Private NAT Gateway.
+1. Workload in the `100.64.x.x` subnet sends a request outbound from the VPC.
+2. The route table of the non-routable subnet directs default traffic to Private NAT Gateway.
 3. Private NAT Gateway translates the source IP to the gateway's routable IP.
-4. The traffic continues through Transit Gateway to the destination system.
-5. The response returns to Private NAT Gateway.
-6. The gateway translates it back to the original IP of the workload.
+4. Traffic proceeds via Transit Gateway to the destination system.
+5. Response returns to Private NAT Gateway.
+6. Gateway translates back to the workload's original IP.
 
-The internal workload does not need to know that NAT is happening. It still sends requests as usual.
-
----
-
-## How should the route table be configured?
-
-Basically, United used two types of route tables.
-
-For the **non-routable subnet**, internal traffic inside the VPC still goes through the local route. Services such as S3 or DynamoDB can go through VPC endpoints. Other traffic goes through Private NAT Gateway.
-
-For the **routable subnet**, default traffic can go through Transit Gateway to reach the corporate network, on-premises systems, or other VPCs.
-
-This configuration clearly separates responsibilities:
-
-* Non-routable subnets are used for large-scale compute.
-* Routable subnets are used for components that need broader network connectivity.
-* Private NAT Gateway acts as the address translation layer between the two areas.
+Workloads inside don't need to know NAT is happening. They send requests normally.
 
 ---
 
-## Results achieved
+## How Are Route Tables Configured?
 
-After using Private NAT Gateway, United Airlines was able to decouple compute scaling from the limitation of routable IPs.
+Basically, United uses two types of route tables.
 
-Previously, during **IRROPS**, tasks or functions could fail because the subnet ran out of IPs. After moving to this model, compute workloads could scale on non-routable subnets without being limited by the scarce routable IP pool.
+For **non-routable subnets**, internal VPC traffic still goes local. Services like S3 or DynamoDB can go through VPC endpoints. Other traffic goes via Private NAT Gateway.
 
-The time needed to add capacity also changed significantly. Instead of waiting several weeks to request more IPs and update firewalls, teams could expand workloads within minutes on the `100.64.0.0/10` range.
+For **routable subnets**, default traffic can go via Transit Gateway to reach corporate networks, on-premises systems, or other VPCs.
 
-This is especially important in aviation, because even one incident where the rebooking system cannot scale in time can affect tens of thousands of passengers in a short period.
+This configuration clearly separates roles:
 
----
-
-## A few operational lessons
-
-There are several important points to note when deploying Private NAT Gateway at a large scale.
-
-First, NAT Gateway should be deployed appropriately by **Availability Zone**. When traffic increases heavily, NAT Gateway handles a large load. A single gateway has very high limits, but with thousands of short-lived Lambda invocations calling the same endpoint, **port exhaustion** can still occur. Therefore, metrics such as `ErrorPortAllocation` should be monitored in CloudWatch.
-
-Second, not every resource should be moved to a non-routable subnet. Components that need to be accessed directly from the corporate network, such as load balancers, NAT Gateway, or certain special interfaces, should still remain in routable subnets.
-
-Third, NAT hides the original IP of the workload. The destination system sees the source IP as the Private NAT Gateway instead of the IP of the container or Lambda function. For tracing, **VPC Flow Logs** with a custom format can be used to record both the pre-NAT and post-NAT addresses.
-
-Fourth, with **Amazon EKS**, United can use custom networking so that pods receive non-routable IPs. But with **ECS**, **Glue**, and **Lambda**, these services attach ENIs directly to the configured subnet, so Private NAT Gateway is a more suitable way to handle outbound connectivity.
+- Non-routable subnets for large-scale compute.
+- Routable subnets for components needing broader network connectivity.
+- Private NAT Gateway as the address translation layer between zones.
 
 ---
 
-## When should this model be used?
+## Results Achieved
 
-Private NAT Gateway is suitable for enterprises facing IPv4 shortage in a hybrid network environment, especially when:
+After using Private NAT Gateway, United Airlines can decouple compute scaling from routable IP constraints.
 
-* There are many AWS accounts connected to on-premises.
-* RFC 1918 space is allocated with strict limitations.
-* Serverless or container workloads need to scale suddenly.
-* Requesting additional IPs takes a long time.
-* The system still depends heavily on IPv4.
-* Outbound connectivity is needed to multiple VPCs, shared services, or on-premises systems.
+Previously, during **IRROPS**, tasks or functions could fail due to subnet IP exhaustion. After switching to this model, compute workloads can scale on non-routable subnets without being limited by scarce routable IP pools.
 
-This is not a complete long-term replacement for IPv6, but it is a practical way to solve the scaling problem within the current infrastructure.
+Capacity addition time changed significantly. Instead of waiting weeks for IP requests and firewall updates, teams can expand workloads in minutes on the `100.64.0.0/10` range.
+
+This is especially critical for aviation—a single incident preventing the rebooking system from scaling quickly could impact tens of thousands of passengers in short timeframes.
+
+---
+
+## Key Lessons from Operations
+
+Some points warrant attention when deploying Private NAT Gateway at scale.
+
+First, deploy NAT Gateways appropriately per **Availability Zone**. With heavy traffic, gateways experience high load. While a gateway has very high limits, thousands of short-lived Lambda invocations calling one endpoint could still cause **port exhaustion**. Monitor metrics like `ErrorPortAllocation` on CloudWatch.
+
+Second, not all resources should move to non-routable subnets. Components needing direct corporate network access—like load balancers, NAT Gateways, or special interfaces—should remain in routable subnets.
+
+Third, NAT hides the workload's original IP. Destination systems see the source as Private NAT Gateway rather than the container or Lambda IP. For tracing, use **VPC Flow Logs** with custom format to record both pre-NAT and post-NAT addresses.
+
+Fourth, with **Amazon EKS**, United can use custom networking for pods to receive non-routable IPs. But with **ECS**, **Glue**, and **Lambda**, these services attach ENIs directly to the configured subnet, making Private NAT Gateway more appropriate for handling outbound connectivity.
+
+---
+
+## When to Use This Model?
+
+Private NAT Gateway suits enterprises facing IPv4 exhaustion in hybrid networks, especially when:
+
+- Multiple AWS accounts connect to on-premises systems.
+- RFC 1918 space allocation is limited.
+- Serverless or container workloads need sudden scaling.
+- Requesting additional IPs takes significant time.
+- Systems still heavily depend on IPv4.
+- Outbound connectivity is needed to many VPCs, shared services, or on-premises systems.
+
+This isn't a complete replacement for IPv6 long-term, but a practical way to handle scaling within current infrastructure.
 
 ---
 
 ## Conclusion
 
-The story of United Airlines shows a very real problem in cloud networking: sometimes the system is not limited by compute, but by IP addresses.
+United Airlines' story illustrates a very real cloud networking issue: sometimes systems aren't limited by compute, but by IP addresses.
 
-By moving workloads to the non-routable `100.64.0.0/10` subnet and using Private NAT Gateway to translate traffic to a routable network, United removed the IP limitation from the scaling process. Workloads such as ECS, AWS Glue, and Lambda can scale faster during high-pressure periods without waiting for additional IP allocation from the network team.
+By moving workloads to non-routable `100.64.0.0/10` subnets and using Private NAT Gateway to translate traffic to routable networks, United removed the IP limit from scaling. Workloads like ECS, AWS Glue, and Lambda can expand faster during high-pressure periods without waiting for IP allocation from the network team.
 
-In my opinion, the most valuable point of this solution is its practicality. It does not require major changes to destination systems, does not require years of network re-architecture, and can be deployed on the existing IPv4 infrastructure.
+In my view, the most valuable aspect is practicality. It requires no major destination system changes, doesn't need years of network re-architecture, and works with existing IPv4 infrastructure.
 
-For large organizations facing IP shortage problems in a hybrid AWS environment, Private NAT Gateway is a worthwhile option to consider.
-
----
-
-## Reference source
-
-https://aws.amazon.com/vi/blogs/networking-and-content-delivery/how-united-airlines-solved-ip-exhaustion-with-private-nat-gateway/
+For large organizations facing IP constraints in hybrid AWS environments, Private NAT Gateway is a worthy approach to consider.
 
 ---
 
-<img src="/images/Blog/blog3-3.png" style="max-width:100%; margin-bottom:16px;" />
-<img src="/images/Blog/blog3-2.png" style="max-width:100%; margin-bottom:16px;" />
-<img src="/images/Blog/blog3-1.png" style="max-width:100%; margin-bottom:16px;" />
+## Reference Links
+
+[https://aws.amazon.com/blogs/networking-and-content-delivery/how-united-airlines-solved-ip-exhaustion-with-private-nat-gateway/](https://aws.amazon.com/blogs/networking-and-content-delivery/how-united-airlines-solved-ip-exhaustion-with-private-nat-gateway/)
+
+---
+
+![Blog 3](/images/Blog3-1.png)
+![Blog 3](/images/Blog3-2.png)
+![Blog 3](/images/Blog3-3.png)

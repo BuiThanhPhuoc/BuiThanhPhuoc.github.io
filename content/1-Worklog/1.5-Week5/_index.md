@@ -6,8 +6,7 @@ chapter: false
 pre: " <b> 1.5. </b> "
 ---
 
-# Week 5 Worklog
-
+ 
 {{% notice note %}}
 **Info:** Learning progress and practical report for Week 5 - multi-account governance, security services, infrastructure as code, containers, and developer tooling.
 {{% /notice %}}

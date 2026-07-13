@@ -6,8 +6,7 @@ chapter: false
 pre: " <b> 1.4. </b> "
 ---
 
-# Week 4 Worklog
-
+ 
 {{% notice note %}}
 **Info:** Learning progress and practical report for Week 4 - AWS Support workflow, managed databases, high availability, serverless, NoSQL, and CloudWatch monitoring.
 {{% /notice %}}

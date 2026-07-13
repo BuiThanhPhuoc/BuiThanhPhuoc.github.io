@@ -5,9 +5,6 @@ weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-
-# Worklog Tuần 1
-
 {{% notice note %}}
 **Thông tin:** Báo cáo tiến độ tuần 1 - tham gia KickOff First Cloud AI Journey, làm quen chương trình và chuẩn bị nhịp làm việc thực tập.
 {{% /notice %}}

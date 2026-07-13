@@ -1,99 +1,100 @@
 ---
 title: "Blog 1"
-date: 2024-07-07
+date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
-----------------------
-
-{{% notice note %}}
-📌 **Infor:** Blog 1 - Amazon VPC Lattice
+---
+{{% notice warning %}}
+⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-# Amazon VPC Lattice - When microservices no longer have to take a long detour to communicate with each other
+# Amazon VPC Lattice - When Microservices No Longer Need to Take the Long Way Around to Communicate
 
-Hello everyone, today I will quickly share a case study from AWS about how **Insurance Australia Group (IAG)** used **Amazon VPC Lattice** to improve communication between services in a serverless architecture.
+Hello everyone, today I'll share a quick case study from AWS on how **Insurance Australia Group (IAG)** used **Amazon VPC Lattice** to improve service-to-service communication in a serverless architecture.
 
-IAG is a large insurance company in Australia and New Zealand, operating many customer-facing systems such as insurance purchasing, policy management, and related services. They built their platform on AWS using a serverless approach with many microservices running on **AWS Lambda**. As the number of services increased, service-to-service communication began to create performance and complexity issues.
+IAG is a major insurance company operating in Australia and New Zealand, running multiple systems serving customers such as insurance purchasing, contract management, and related services. They built their platform on AWS following a serverless approach with many microservices running on **AWS Lambda**. As the number of services increased, service-to-service calls began causing performance and complexity issues.
 
 ---
 
-## Previous problem
+## The Problem Before
 
-In the old architecture, when one Lambda called another service, the request did not go directly. Instead, it had to go through multiple layers such as **Transit Gateway**, **Egress VPC**, proxy, the Internet, and then finally to **API Gateway** and the destination service.
+In the old architecture, when a Lambda called another service, the request didn't go directly but had to route through many layers like **Transit Gateway**, **Egress VPC**, proxy, the Internet, and finally to the **API Gateway** and the target service.
 
-Although the services were still inside AWS, the request had to take a relatively long route. This increased latency, made the architecture more complex, and made it harder to manage. When one service continued calling multiple other services, the latency accumulated even more. In addition, endpoints were often hardcoded, making changes less flexible.
+Even though the service remained within AWS, the request had to take quite a long route. This increased latency, made the architecture more complex and harder to manage. When one service called multiple other services, latency would compound. Additionally, endpoints were often hardcoded, making changes inflexible.
 
 ---
 
 ## What is Amazon VPC Lattice?
 
-**Amazon VPC Lattice** helps simplify service connectivity within AWS. Instead of manually handling multiple networking layers, services can communicate with each other through a shared connection layer that is more secure and easier to manage.
+**Amazon VPC Lattice** simplifies connecting services within AWS. Instead of having to manage many networking layers yourself, services can communicate with each other through a shared layer that is more secure and easier to manage.
 
-In this case, IAG used **Lattice Services** to expose Lambda functions, allowing services to communicate directly within the AWS network without going through the Internet.
-
----
-
-## New architecture
-
-IAG implemented VPC Lattice by creating separate **Service Networks** for each environment, such as **Development**, **Staging**, and **Production**. These networks are centrally managed and shared with the corresponding accounts.
-
-This approach clearly separates environments while still keeping them easy to manage. At the same time, they used **Auth Policy** to allow traffic only from valid VPCs, adding another layer of security control.
+In this case, IAG used **Lattice Services** to expose Lambda functions, allowing services to communicate directly within the AWS network without needing to go through the Internet.
 
 ---
 
-## New communication flow
+## The New Architecture
 
-After using VPC Lattice, requests between services became much shorter. Lambda only needs to call an internal domain, **Route 53** maps it to the Lattice service, and then the request is forwarded directly to the Lambda function of the destination service.
+IAG deployed VPC Lattice by creating separate **Service Networks** for each environment such as **Development**, **Staging**, and **Production**. These networks are managed centrally and shared across corresponding accounts.
 
-As a result, traffic no longer needs to go through the Internet or multiple intermediary layers, helping reduce latency and improve security.
+This approach clearly separates environments while remaining easy to manage. At the same time, they used **Auth Policy** to only allow traffic from valid VPCs, adding an extra layer of security control.
+
+---
+
+## The New Communication Flow
+
+After using VPC Lattice, requests between services travel much shorter paths. Lambda only needs to call an internal domain, **Route 53** maps it to the Lattice service, and the request is forwarded directly to the target service's Lambda.
+
+As a result, traffic no longer needs to go through the Internet or multiple intermediate layers, reducing latency and improving security.
 
 ---
 
 ## Results
 
-After implementation, IAG recorded a reduction in service-to-service latency from **46% to 83%**, with **P95 latency** improving from **15% to 92%**. This is a significant improvement, especially for systems with many services calling each other.
+After implementation, IAG recorded service-to-service latency reduced by **46% to 83%**, with **P95 latency** improved from **15% to 92%**. This is a significant improvement, especially for a system with many services calling each other.
 
-In addition, the architecture also became cleaner, easier to operate, and less dependent on complex networking components.
+Additionally, the architecture became simpler, easier to operate, and reduced dependence on complex networking components.
 
 ---
 
-## Main benefits
+## Key Benefits
 
-VPC Lattice helps significantly reduce latency, simplify network architecture, and improve security because traffic does not need to go out to the Internet. Environment separation also becomes clearer, making it suitable for multi-account systems. In particular, it fits very well with serverless architectures using Lambda.
+VPC Lattice helps significantly reduce latency, simplifies network architecture, and improves security because traffic doesn't need to go out to the Internet. Environment separation is also clearer, fitting well with multi-account systems. It's particularly well-suited for serverless architectures using Lambda.
 
 The main benefits can be summarized as follows:
 
-* Reduces latency when services communicate with each other.
-* Simplifies the network architecture between microservices.
-* Limits the need for traffic to go through the Internet.
-* Improves security control with Auth Policy.
-* Fits systems with multiple environments and multiple AWS accounts.
-* Provides good support for serverless architectures using AWS Lambda.
+- Reduced latency when services communicate with each other.
+- Simplified network architecture between microservices.
+- Limited need for traffic to go through the Internet.
+- Increased security control capability through Auth Policy.
+- Suitable for systems with multiple environments and multiple AWS accounts.
+- Good support for serverless architectures using AWS Lambda.
 
 ---
 
-## A few notes
+## A Few Notes
 
-Currently, IAG is still using **Auth Policy** at the Service Network level, which means control is based on VPC. In the future, they want to control access in more detail at the individual service level.
+IAG is currently using **Auth Policy** at the Service Network level, meaning VPC-level control. In the future, they want more granular control at the individual service level.
 
-In addition, the event format from VPC Lattice is different from API Gateway, so teams need to update their handlers to process it correctly.
+Additionally, the event format from VPC Lattice differs from API Gateway, so teams need to update their handlers accordingly.
 
 ---
 
 ## Conclusion
 
-Amazon VPC Lattice helps IAG solve a common problem in microservices: faster, simpler, and more secure communication. Instead of having to go through multiple network layers, services can call each other directly within AWS, significantly reducing latency and making the architecture cleaner.
+Amazon VPC Lattice helps IAG solve a common problem in microservices: faster, simpler, and more secure communication. Instead of having to route through many network layers, services can call directly within AWS, significantly reducing latency and simplifying the architecture.
 
-If you are building a serverless or microservices system on AWS, especially when the number of services starts to grow, VPC Lattice is a very worthwhile option to consider.
+If you're building serverless or microservices systems on AWS, especially as the number of services grows, VPC Lattice is a very worthwhile option to consider.
 
 ---
 
-## Reference link
+## Reference Links
 
-* [How IAG accelerated service-to-service communication with Amazon VPC Lattice](https://aws.amazon.com/vi/blogs/networking-and-content-delivery/how-iag-accelerated-service-to-service-communication-with-amazon-vpc-lattice/)
+[https://aws.amazon.com/vi/blogs/networking-and-content-delivery/how-iag-accelerated-service-to-service-communication-with-amazon-vpc-lattice/](https://aws.amazon.com/vi/blogs/networking-and-content-delivery/how-iag-accelerated-service-to-service-communication-with-amazon-vpc-lattice/)
+
 ---
 
-<img src="/images/Blog/blog1-1.png" style="max-width:100%; margin-bottom:16px;" />
+![Blog 1](/images/Blog1.png)
 
-<img src="/images/Blog/blog1-2.png" style="max-width:100%; margin-bottom:16px;" />
+
+(/images/Blog1.png)

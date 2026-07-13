@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
-# Chia sẻ, đóng góp ý kiến
-
 Chương trình First Cloud AI Journey đã cho tôi cơ hội học AWS theo lộ trình rõ ràng, thực hành với các dịch vụ cloud thực tế và cải thiện khả năng tài liệu hóa công việc kỹ thuật. Bên cạnh kiến thức chuyên môn, chương trình còn giúp tôi hiểu cách tiếp cận một dự án cloud chuyên nghiệp hơn: xác định yêu cầu, chọn dịch vụ phù hợp, ước tính chi phí, kiểm thử cẩn thận và dọn dẹp tài nguyên sau khi thực hành.
 
 ### Đánh giá chung

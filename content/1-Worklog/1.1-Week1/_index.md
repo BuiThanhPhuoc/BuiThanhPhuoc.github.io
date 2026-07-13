@@ -5,9 +5,6 @@ weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-
-# Week 1 Worklog
-
 {{% notice note %}}
 **Info:** Learning progress and practical report for Week 1 - First Cloud AI Journey kickoff, onboarding, and internship orientation.
 {{% /notice %}}

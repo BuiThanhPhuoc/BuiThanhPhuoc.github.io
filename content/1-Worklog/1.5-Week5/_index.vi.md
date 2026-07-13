@@ -6,13 +6,11 @@ chapter: false
 pre: " <b> 1.5. </b> "
 ---
 
-# Worklog Tuần 5
-
 {{% notice note %}}
 **Thông tin:** Báo cáo tiến độ tuần 5 - học quản trị đa tài khoản, bảo mật thông tin nhạy cảm, IaC, container và pipeline triển khai.
 {{% /notice %}}
 
-**Thời gian:** 11/05/2026 - 16/05/2026
+<!-- Removed duplicate title -->
 
 ## Mục tiêu Tuần 5:
 

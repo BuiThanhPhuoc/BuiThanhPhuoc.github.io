@@ -26,6 +26,10 @@ During my internship, I participated in three events. Each one was a memorable e
 ### [Event 1](4.1-Event1/)  
 &emsp;**Event Name:** AWS Learning, Hackathon, Confidence, and Procrastination  
 
+&emsp;**Date:** 30/05/2026  
+
+&emsp;**Location:** 26th Floor, Bitexco Financial Tower, 02 Hai Trieu, Ben Nghe Ward, Ho Chi Minh City  
+
 &emsp;**Role:** Attendee  
 
 ---
@@ -33,11 +37,19 @@ During my internship, I participated in three events. Each one was a memorable e
 ### [Event 2](4.2-Event2/)  
 &emsp;**Event Name:** FCAJ Community Day "Data Driven, AI Risen"  
 
+&emsp;**Date:** 13/06/2026  
+
+&emsp;**Location:** 26th Floor, Bitexco Financial Tower, 02 Hai Trieu, Ben Nghe Ward, Ho Chi Minh City  
+
 &emsp;**Role:** Attendee  
 
 ---
 
 ### [Event 3](4.3-Event3/)  
 &emsp;**Event Name:** GameDay "8 Teams Compete"  
+
+&emsp;**Date:** 20/06/2026  
+
+&emsp;**Location:** 26th Floor, Bitexco Financial Tower, 02 Hai Trieu, Ben Nghe Ward, Ho Chi Minh City  
 
 &emsp;**Role:** Attendee  

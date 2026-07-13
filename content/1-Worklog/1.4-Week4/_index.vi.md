@@ -6,13 +6,12 @@ chapter: false
 pre: " <b> 1.4. </b> "
 ---
 
-# Worklog Tuần 4
-
+ 
 {{% notice note %}}
 **Thông tin:** Báo cáo tiến độ tuần 4 - xử lý xác minh qua AWS Support, học RDS, ALB, Auto Scaling, Lambda, DynamoDB và CloudWatch.
 {{% /notice %}}
 
-**Thời gian:** 04/05/2026 - 09/05/2026
+<!-- Removed duplicate title -->
 
 ## Mục tiêu Tuần 4:
 

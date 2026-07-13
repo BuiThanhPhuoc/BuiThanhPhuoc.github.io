@@ -6,13 +6,11 @@ chapter: false
 pre: " <b> 1.10. </b> "
 ---
 
-# Worklog Tuần 10
-
 {{% notice note %}}
 **Thông tin:** Báo cáo triển khai tuần 10 - hoàn thiện workflow theo vai trò, báo cáo hiện trường, voice input, real-time chat và quản lý tài khoản doanh nghiệp.
 {{% /notice %}}
 
-**Thời gian:** 15/06/2026 - 21/06/2026
+<!-- Removed duplicate title -->
 
 ## Mục tiêu Tuần 10:
 

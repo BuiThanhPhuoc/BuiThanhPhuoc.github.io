@@ -5,9 +5,6 @@ weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-
-# Week 2 Worklog
-
 {{% notice note %}}
 **Info:** Learning progress and practical report for Week 2 - AWS fundamentals, global infrastructure, IAM, cost management, EC2, and Well-Architected learning.
 {{% /notice %}}

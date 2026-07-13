@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
-# Sharing and Feedback
-
 The First Cloud AI Journey internship gave me a valuable opportunity to learn AWS in a structured way, practice with real cloud services, and improve my ability to document technical work. Besides technical knowledge, the program also helped me understand how to approach cloud projects more professionally: define requirements, select suitable services, estimate cost, test carefully, and clean up resources after practice.
 
 ### Overall Evaluation

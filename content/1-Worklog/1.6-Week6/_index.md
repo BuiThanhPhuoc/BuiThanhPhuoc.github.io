@@ -6,8 +6,7 @@ chapter: false
 pre: " <b> 1.6. </b> "
 ---
 
-# Week 6 Worklog
-
+ 
 {{% notice note %}}
 **Info:** Learning progress and practical report for Week 6 - CI/CD improvement, serverless packaging, secure configuration, analytics, FinOps, and interview practice.
 {{% /notice %}}

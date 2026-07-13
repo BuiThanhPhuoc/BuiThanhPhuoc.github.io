@@ -6,13 +6,12 @@ chapter: false
 pre: " <b> 1.7. </b> "
 ---
 
-# Worklog Tuần 7
-
+ 
 {{% notice note %}}
 **Thông tin:** Báo cáo tiến độ tuần 7 - học WAF, Shield, Firewall Manager, Hybrid Cloud, EFS, kiến trúc Web Server đa vùng và tham gia AWS Vietnam Meetup.
 {{% /notice %}}
 
-**Thời gian:** 25/05/2026 - 30/05/2026
+<!-- Removed duplicate title -->
 
 ## Mục tiêu Tuần 7:
 

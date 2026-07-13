@@ -6,13 +6,12 @@ chapter: false
 pre: " <b> 1.6. </b> "
 ---
 
-# Worklog Tuần 6
-
+ 
 {{% notice note %}}
 **Thông tin:** Báo cáo tiến độ tuần 6 - tối ưu CI/CD, đóng gói serverless, quản lý cấu hình an toàn, phân tích dữ liệu, FinOps và mock interview.
 {{% /notice %}}
 
-**Thời gian:** 18/05/2026 - 23/05/2026
+<!-- Removed duplicate title -->
 
 ## Mục tiêu Tuần 6:
 

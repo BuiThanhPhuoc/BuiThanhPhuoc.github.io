@@ -6,8 +6,7 @@ chapter: false
 pre: " <b> 1.12. </b> "
 ---
 
-# Week 12 Worklog
-
+ 
 {{% notice note %}}
 **Info:** Final project report for Week 12 - validating, deploying, testing, improving, cleaning up, and finalizing the VDCMS AWS project.
 {{% /notice %}}

@@ -6,8 +6,7 @@ chapter: false
 pre: " <b> 1.9. </b> "
 ---
 
-# Week 9 Worklog
-
+ 
 {{% notice note %}}
 **Info:** Project implementation report for Week 9 - defining the Voice-Driven Construction Management System and building the first backend/frontend modules.
 {{% /notice %}}

@@ -6,13 +6,11 @@ chapter: false
 pre: " <b> 1.11. </b> "
 ---
 
-# Worklog Tuần 11
-
 {{% notice note %}}
 **Thông tin:** Báo cáo Cloud deployment tuần 11 - ánh xạ VDCMS lên AWS, chuẩn bị hạ tầng, xử lý giọng nói bất đồng bộ, email, identity và vận hành.
 {{% /notice %}}
 
-**Thời gian:** 22/06/2026 - 28/06/2026
+<!-- Removed duplicate title -->
 
 ## Mục tiêu Tuần 11:
 

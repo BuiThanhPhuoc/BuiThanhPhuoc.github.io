@@ -6,13 +6,12 @@ chapter: false
 pre: " <b> 1.2. </b> "
 ---
 
-# Worklog Tuần 2
-
+ 
 {{% notice note %}}
 **Thông tin:** Báo cáo tiến độ tuần 2 - học định hướng FCAJ, AWS Global Infrastructure, IAM/MFA, quản lý chi phí, EC2 và Well-Architected Framework.
 {{% /notice %}}
 
-**Thời gian:** 20/04/2026 - 25/04/2026
+<!-- Removed duplicate title -->
 
 ## Mục tiêu Tuần 2:
 

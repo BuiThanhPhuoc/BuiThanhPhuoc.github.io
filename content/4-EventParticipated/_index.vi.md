@@ -27,6 +27,10 @@ Trong quá trình thực tập, em đã tham gia 3 events, với mỗi event là
 ### [Event 1](4.1-Event1/)
 &emsp;**Tên sự kiện:** AWS Learning, Hackathon, Confidence và Procrastination
 
+&emsp;**Ngày tổ chức:** 30/05/2026
+
+&emsp;**Địa điểm:** Tầng 26, Bitexco Financial Tower, 02 Hai Trieu, Phường Bến Nghé, Thành phố Hồ Chí Minh
+
 &emsp;**Vai trò trong sự kiện:** Người tham dự 
 
 
@@ -34,11 +38,19 @@ Trong quá trình thực tập, em đã tham gia 3 events, với mỗi event là
 ### [Event 2](4.2-Event2/)
 &emsp;**Tên sự kiện:** FCAJ Community Day "Data Driven, AI Risen"
 
+&emsp;**Ngày tổ chức:** 13/06/2026
+
+&emsp;**Địa điểm:** Tầng 26, Bitexco Financial Tower, 02 Hai Trieu, Phường Bến Nghé, Thành phố Hồ Chí Minh
+
 &emsp;**Vai trò trong sự kiện:** Người tham dự 
 
 
 
 ### [Event 3](4.3-Event3/)
 &emsp;**Tên sự kiện:** GameDay "8 Đội Tranh Hùng"
+
+&emsp;**Ngày tổ chức:** 20/06/2026
+
+&emsp;**Địa điểm:** Tầng 26, Bitexco Financial Tower, 02 Hai Trieu, Phường Bến Nghé, Thành phố Hồ Chí Minh
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự 

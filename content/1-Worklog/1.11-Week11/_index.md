@@ -6,8 +6,7 @@ chapter: false
 pre: " <b> 1.11. </b> "
 ---
 
-# Week 11 Worklog
-
+ 
 {{% notice note %}}
 **Info:** Cloud deployment report for Week 11 - mapping VDCMS to AWS services and preparing infrastructure, async speech processing, identity, email, and operation components.
 {{% /notice %}}

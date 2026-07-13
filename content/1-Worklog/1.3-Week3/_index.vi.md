@@ -6,13 +6,12 @@ chapter: false
 pre: " <b> 1.3. </b> "
 ---
 
-# Worklog Tuần 3
-
+ 
 {{% notice note %}}
 **Thông tin:** Báo cáo tiến độ tuần 3 - thực hành Amazon S3, EBS, VPC, Security Groups, Network ACLs, CloudFront và chuẩn hóa hồ sơ Root.
 {{% /notice %}}
 
-**Thời gian:** 27/04/2026 - 02/05/2026
+<!-- Removed duplicate title -->
 
 ## Mục tiêu Tuần 3:
 
