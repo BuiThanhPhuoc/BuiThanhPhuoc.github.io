@@ -73,7 +73,7 @@
                  {{$showBreadcrumb := (and (not .Params.disableBreadcrumb) (not .Site.Params.disableBreadcrumb))}}
                  {{if $showBreadcrumb}}
                     {{ template "breadcrumb" dict "page" . "value" .Title }}
-                 {{ else }}
+                 {{ else if not .IsSection }}
                    {{ .Title }}
                  {{ end }}
                   </span>
